@@ -125,7 +125,7 @@ func DeleteUser(id int) error {
 		return fmt.Errorf("User with ID %d does not exists", id)
 	}
 
-	deleteStatement := `DELETE FROM "userdata" WHERE userid=%1`
+	deleteStatement := `DELETE FROM "userdata" WHERE userid=$1`
 	_, err = db.Exec(deleteStatement, id)
 	if err != nil {
 		return err
