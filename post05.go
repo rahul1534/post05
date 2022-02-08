@@ -131,6 +131,12 @@ func DeleteUser(id int) error {
 		return err
 	}
 
+	deleteStatement = `DELETE FROM "users" WHERE id=$1`
+	_, err = db.Exec(deleteStatement, id)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 
